@@ -35,7 +35,8 @@ const cloneJuggernaut = (nameProject) => {
         if (!command.code) {
             shell.cd(nameProject);
             insertNameProject(nameProject);
-            shell.exec(`git remote remove origin`, {async: true});
+            shell.exec(`rm -rf .git`, {async: true});
+            shell.exec(`git init`, {async: true});
             const instal = shell.exec('npm install', {async: true}, () => {
                 if (!instal.code) {
                     console.log(chalk.green('Juggernaut is here!!!'));
@@ -74,35 +75,3 @@ const run = async () => {
 };
   
 run();
-
-// program
-//     .command('juggernaut-create-project [name]')
-//     .description('Generate a boilerplate base with react projects in Softbox')
-//     .action(async (name) => {
-//         let answers;
-//         if (!name) {
-//             answers = await inquirer.prompt([
-//                 {
-//                     type: 'input',
-//                     name: 'name',
-//                     message: 'The project name is?',
-//                 }
-//             ])
-//             if (answers.name) {
-//                 //shell.mkdir('-p', answers.name);
-//                 const command = shell.exec(`git clone git@github.com:SoftboxLab/juggernaut.git ${answers.name}`);
-//                 if (!command.code) {
-//                     const instal = shell.exec('npm i');
-//                     if (!instal.code) {
-//                         console.log(chalk.green('Juggernaut is here!!!'));
-//                     } else {
-//                         console.log(command.stderr);
-//                         console.log(chalk.red('Error to install dependcies.'));
-//                     }
-//                 } else {
-//                     console.log(command.stderr);
-//                     console.log(chalk.red('Error to clone.'));
-//                 }
-//             }
-//         }
-//     })
