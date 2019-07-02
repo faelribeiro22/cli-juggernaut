@@ -1,6 +1,6 @@
 {
   "name": "juggernaut-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
-    "commander": "^2.20.0",
     "figlet": "^1.2.3",
     "inquirer": "^6.4.1",
     "shelljs": "^0.8.3"

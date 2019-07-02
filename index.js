@@ -6,10 +6,6 @@ const figlet = require("figlet");
 const shell = require("shelljs");
 const { join } = require('path');
 const fs = require('fs');
-const program = require('commander');
-const package = require('./package.json');
-
-program.version(package.version);
 
 const init = () => {
     console.log(
