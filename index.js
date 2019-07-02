@@ -6,6 +6,10 @@ const figlet = require("figlet");
 const shell = require("shelljs");
 const { join } = require('path');
 const fs = require('fs');
+const program = require('commander');
+const package = require('./package.json');
+
+program.version(package.version);
 
 const init = () => {
     console.log(
@@ -67,9 +71,13 @@ const run = async () => {
     // show script introduction
     init();
     // ask questions
-    const answers = await askQuestions();
-    const { PROJECTNAME } = answers;
-    cloneJuggernaut(PROJECTNAME);
+    if (!process.argv[2]) {
+        const answers = await askQuestions();
+        const { PROJECTNAME } = answers;
+        cloneJuggernaut(PROJECTNAME);
+    } else {
+        cloneJuggernaut(process.argv[2]);
+    }
     // create the file
     // show success message
 };
